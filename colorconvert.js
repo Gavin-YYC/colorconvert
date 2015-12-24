@@ -3,7 +3,7 @@
  *  JS练习，Blog：http://youthol.top
  *  @params Array [ r, g, b ] or [ h, s, l ] or [ h, s, v ]
  *  @return Array [ r, g, b ] or [ h, s, l ] or [ h, s, v ]
- *  GitHub : 
+ *  GitHub : http://gavin-yyc.github.io/colorconvert/
  */
 /*********************************
 *     Function hsv2rgb          *

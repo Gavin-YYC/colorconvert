@@ -63,6 +63,52 @@ body{
 	font-size: 22px;
 	line-height: 40px;
 }
+.main .code{
+	display: none;
+	clear: both;
+	width: 540px;
+	background: #ccc;
+	border-radius: 4px;
+	font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+	font-size: 90%;
+	padding: 10px;
+	color: #008200;
+	z-index: 99999;
+	position: absolute;
+	left: 50%;
+	margin-left: -270px;
+}
+.main p.about{
+	text-align: center;
+	position: fixed;
+	bottom: 40px;
+	left: 0;
+	right: 0;
+}
+.main p a{
+	display: inline-block;
+	color: #fff;
+	width: 100px;
+	text-decoration: none;
+}
+.main .code code{
+	color: #006699;
+	font-weight: bold;
+}
+.main .code code span{
+	color: #008200;
+	font-weight: normal;
+}
+.overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,.7);
+	display: none;
+}
+
 input::-webkit-input-placeholder {
 	font-size: 12px;
 	line-height: 20px;

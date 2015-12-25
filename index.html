@@ -29,19 +29,43 @@
 		<button id="hsv2rgb">转换</button>
 		<p id = "hsv2RgbResult"></p>
 	</div>
+	<div class="overlay"></div>
+	<p class="about"><a href="javascript:;">使用方式</a><a href="https://github.com/Gavin-YYC/colorconvert" target="_blank">GitHub</a></p>
+
+	<div class="code">
+		<pre>
+//使用方式：
+//第一步，引入js文件
+<code>
+&lt;script type="text/javascript" src="colorconvert.js"&gt;&lt;/script&gt;
+</code>
+//第二步，调用$C(),或者CC()传入一个数组与转换规则
+<code>
+&lt;script type="text/javascript"&gt;
+    var rgb = [ 100, 23, 67 ];
+    var res = $C( rgb, "rgb2hsl" );<span>//支持rgb2hsl、rgb2hsv、hsv2rgb、hsl2rgb</span>
+    alert( res );
+&lt;/script&gt;
+</code>
+		</pre>
+	</div>
 </div>
 <script type="text/javascript" src="colorconvert.js"></script>
 <script type="text/javascript">
 window.onload = function(){
 	//获取按钮
-	var rgb2hslBtn = document.getElementById( "rgb2hsl" );
-	var hsl2rgbBtn = document.getElementById( "hsl2rgb" );
-	var hsv2rgbBtn = document.getElementById( "hsv2rgb" );
+	var rgb2hslBtn = document.getElementById( "rgb2hsl" ),
+		hsl2rgbBtn = document.getElementById( "hsl2rgb" ),
+		hsv2rgbBtn = document.getElementById( "hsv2rgb" ),
 
-	//获取文本
-	var hslText = document.getElementById( "hslText" );
-	var hsvText = document.getElementById( "hsvText" );
-	
+		//获取文本
+		hslText = document.getElementById( "hslText" ),
+	 	hsvText = document.getElementById( "hsvText" ),
+
+	 	//弹出使用方式
+	 	showCode = document.querySelector("p.about a"),
+	 	codeArea = document.querySelector(".code"),
+	 	overlay  = document.querySelector(".overlay");
 	//RGB 转换成 HSL 或者 HSV（HSB）
 	rgb2hslBtn.onclick = function(){
 		//获取rgb，并每一项都除以1000
@@ -69,6 +93,17 @@ window.onload = function(){
 		result = $C( hsv, "hsv2rgb");
 		p.innerHTML = "RGB：" + result[0] + " " + result[1] + " " + result[2]; 
 		document.body.style.backgroundColor = "rgb(" + result[0] + "," + result[1] + "," + result[2] + ")";
+	}
+
+	//弹出使用方式
+	showCode.onclick = function(e){
+		overlay.style.display = "block";
+		codeArea.style.display = "block";
+	}
+	overlay.onclick = function(e){
+		this.style.display = "none";
+		codeArea.style.display = "none";
+		e = e || window.event;
 	}
 
 };

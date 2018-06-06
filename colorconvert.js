@@ -95,7 +95,7 @@
 		}else if ( 0 < l && l <= 0.5 ) {
 			s = ( max - min ) / ( max + min );
 		}else if ( l > 0.5 ) {
-			s = ( max - min ) / ( 2 - ( max - min ) );
+			s = ( max - min ) / ( 2 - ( max + min ) );
 		};
 
 		h  = Math.round( h );

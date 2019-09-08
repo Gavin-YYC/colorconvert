@@ -50,51 +50,9 @@
 		</pre>
 	</div>
 </div>
-<script type="text/javascript" src="colorconvert.js"></script>
+<script type="text/javascript" src="../colorconvert.js"></script>
 <script type="text/javascript">
 window.onload = function(){
-	//获取按钮
-	var rgb2hslBtn = document.getElementById( "rgb2hsl" ),
-		hsl2rgbBtn = document.getElementById( "hsl2rgb" ),
-		hsv2rgbBtn = document.getElementById( "hsv2rgb" ),
-
-		//获取文本
-		hslText = document.getElementById( "hslText" ),
-	 	hsvText = document.getElementById( "hsvText" ),
-
-	 	//弹出使用方式
-	 	showCode = document.querySelector("p.about a"),
-	 	codeArea = document.querySelector(".code"),
-	 	overlay  = document.querySelector(".overlay");
-	//RGB 转换成 HSL 或者 HSV（HSB）
-	rgb2hslBtn.onclick = function(){
-		//获取rgb，并每一项都除以1000
-		var rgb = document.getElementById( "rgb" ).value.split( " " );
-		hslres = $C( rgb, "rgb2hsl" );
-		hsvres = $C( rgb, "rgb2hsv" );
-		hslText.innerHTML = "HSL：" + hslres[0] + " " + hslres[1] + " " + hslres[2];
-		hsvText.innerHTML = "HSV(HSB)：" + hsvres[0] + " " + hsvres[1] + " " + hsvres[2];
-		document.body.style.backgroundColor = "rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ")";
-	};
-
-	//HSL 转换成 RGB
-	hsl2rgbBtn.onclick = function(){
-		var hsl = document.getElementById( "hsl" ).value.split( " " );
-		var p = document.getElementById("hsl2RgbResult");
-		result = $C( hsl, "hsl2rgb" );
-		p.innerHTML = "RGB：" + result[0] + " " + result[1] + " " + result[2]; 
-		document.body.style.backgroundColor = "rgb(" + result[0] + "," + result[1] + "," + result[2] + ")";
-	}
-
-	//HSV 转换成 RGB
-	hsv2rgbBtn.onclick = function(){
-		var hsv = document.getElementById( "hsv" ).value.split( " " );
-		var p = document.getElementById("hsv2RgbResult");
-		result = $C( hsv, "hsv2rgb");
-		p.innerHTML = "RGB：" + result[0] + " " + result[1] + " " + result[2]; 
-		document.body.style.backgroundColor = "rgb(" + result[0] + "," + result[1] + "," + result[2] + ")";
-	}
-
 	//弹出使用方式
 	showCode.onclick = function(e){
 		overlay.style.display = "block";
@@ -105,7 +63,6 @@ window.onload = function(){
 		codeArea.style.display = "none";
 		e = e || window.event;
 	}
-
 };
 </script>
 </body>

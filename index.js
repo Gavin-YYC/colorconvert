@@ -1,10 +1,4 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.colorConvert = factory());
-}(this, (function () { 'use strict';
-
-var index = {
+export default {
 	rgb2hsl(r, g, b) {
 		r /= 255;
 		g /= 255;
@@ -28,7 +22,7 @@ var index = {
 			h = 60 * ((b - r) / diff) + 120;
 		} else if (max === b) {
 			h = 60 * ((r - g) / diff) + 240;
-		}
+		};
 
 		if (l === 0 || max === min) {
 			s = 0;
@@ -36,7 +30,7 @@ var index = {
 			s = diff / (2 * l);
 		} else if (l > 0.5) {
 			s = diff / (2 - 2 * l);
-		}
+		};
 
 		return [Math.round(h), Math.round(s * 100), Math.round(l * 100)];
 	},
@@ -65,7 +59,7 @@ var index = {
 			h = 60 * ((b - r) / diff) + 120;
 		} else if (max === b) {
 			h = 60 * ((r - g) / diff) + 240;
-		}
+		};
 
 		return [Math.round(h), Math.round(s * 100), Math.round(v * 100)];
 	},
@@ -175,7 +169,3 @@ var index = {
 		return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 	}
 };
-
-return index;
-
-})));

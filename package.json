@@ -1,0 +1,29 @@
+{
+  "name": "colorconvert",
+  "version": "1.0.0",
+  "description": "JS 在线 颜色转换工具",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "node ./test/index.js",
+    "demo": "",
+    "build": "rollup -wc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gavin-YYC/colorconvert.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gavin-YYC/colorconvert/issues"
+  },
+  "homepage": "https://github.com/Gavin-YYC/colorconvert#readme",
+  "devDependencies": {
+    "tap-spec": "^5.0.0",
+    "tape": "^4.11.0"
+  }
+}

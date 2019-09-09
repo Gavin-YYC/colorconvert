@@ -1,15 +1,6 @@
-JS 在线 颜色转换工具
+# Color Convert
 
-http://gavin-yyc.github.io/colorconvert/
-
-JavaScript Color Convert Tools Online
-
-JS练习
-
-可以进行如下转化：
-
-RGB to HSL
-RGB to HSV(HSB)
-
-HSL to RGB
-HSV(HSB) to RGB
+- rgb2hsl
+- rgb2hsv
+- hsl2rgb
+- hsv2rgb

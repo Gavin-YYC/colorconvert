@@ -106,7 +106,7 @@ function rgb2hex(r, g, b, a) {
  *
  * @param {number} h Hue 色调 0 ~ 360
  * @param {number} s Saturation 饱和度 0 ~ 100
- * @param {number} l lightness 亮度 0 ~ 100
+ * @param {number} l Lightness 亮度 0 ~ 100
  */
 
 function hsl2rgb(h, s, l) {

@@ -12,7 +12,7 @@
 ## Usage：
 
 ```
-import cc from 'colorConvert';
+import cc from '@youc/colocconvert';
 
 cc.rgb2hsl(255, 34, 178);
 ```

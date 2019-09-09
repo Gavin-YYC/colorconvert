@@ -1,7 +1,7 @@
 {
-  "name": "colorconvert",
+  "name": "@youc/colocconvert",
   "version": "1.0.0",
-  "description": "JS颜色转换工具",
+  "description": "color convert rgb2hsl,rgb2hsv,rgb2hex,hsl2rgb,hsv2rgb,hex2reg",
   "main": "index.js",
   "directories": {
     "example": "example"
@@ -26,7 +26,6 @@
     "@babel/preset-env": "^7.6.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-terser": "^5.1.1",
-    "tap-spec": "^5.0.0",
     "tape": "^4.11.0"
   },
   "dependencies": {}

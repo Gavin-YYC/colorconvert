@@ -114,8 +114,7 @@ export function hsl2rgb(h, s, l) {
 			return t + 1.0;
 		} else if (t > 1) {
 			return t - 1.0;
-		}
-		else {
+		} else {
 			return t;
 		}
 	}

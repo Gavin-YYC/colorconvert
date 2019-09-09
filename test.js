@@ -3,7 +3,7 @@
  */
 
 
-const cc = require('../colorConvert.js');
+const cc = require('./colorConvert.js');
 const test = require('tape');
 
 

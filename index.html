@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>在线颜色转换工具RGB转HSL,HSV,HSB,HSL转RGB,HSV转RGB,HSB转RGB</title>
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		font-family: "微软雅黑", "Microsoft YaHei", Helvetica Neue, Helvetica, Arial, sans-serif;
+		font-size: 100%;
+		background: #515177;
+	}
+	.main{
+		width: 80%;
+		margin: 0 auto;
+		overflow: hidden;
+		margin-top: 100px;
+	}
+	.main h1 {
+		text-align: center;
+		padding-bottom: 50px;
+		font-size: 50px;
+		color: #fff;
+	}
+	.layout {
+		display: flex;
+	}
+	.left,
+	.right {
+		width: 50%;
+		flex: 1;
+		border-radius: 10px;
+	}
+	.left {
+		padding: 20px;
+		color: #fff;
+		font-size: 24px;
+		background: rgba(60, 171, 75, .5);
+	}
+	.form-control {
+		display: flex;
+		align-items: center;
+		margin-bottom: 20px;
+	}
+	.form-control label {
+		width: 60px;
+	}
+	.form-control input {
+		flex: 1;
+		border: none;
+		outline: none;
+		height: 24px;
+		padding: 0 5px;
+		font-size: 20px;
+		line-height: 24px;
+		color: #fff;
+		background: rgba(255, 255, 255, .3);
+	}
+	.form-btns {
+		display: flex;
+	}
+	.form-btns input {
+		outline: none;
+		border: none;
+		display: block;
+		width: 100%;
+		font-size: 24px;
+		border-radius: 5px;
+	}
+	.form-btns input:first-child {
+		margin-right: 15px;
+	}
+	</style>
+</head>
+<body>
+<div class="main">
+	<h1>Color Convert</h1>
+	<div class="layout">
+		<div class="left">
+			<div class="form-control">
+				<label for="rgb">RGB</label>
+				<input type="text" name="" id="rgb" placeholder="空格分开，示例：255 255 255">
+			</div>
+			<div class="form-control">
+				<label for="hsl">HSL</label>
+				<input type="text" name="" id="hsl" placeholder="空格分开，示例：360 100 100">
+			</div>
+			<div class="form-control">
+				<label for="hsv">HSV</label>
+				<input type="text" name="" id="hsv" placeholder="空格分开，示例：360 100 100">
+			</div>
+			<div class="form-control">
+				<label for="hex">HEX</label>
+				<input type="text" name="" id="hex" placeholder="示例：#ffffff">
+			</div>
+			<div class="form-btns">
+				<input type="button" value="清空" id="empty">
+				<input type="button" value="转换" id="change">
+			</div>
+		</div>
+		<div class="right">
+			<p>使用方式：</p>
+		</div>
+	</div>
+
+	<p class="about">
+		<a href="javascript:;">使用方式</a>
+		<a href="https://github.com/Gavin-YYC/colorconvert" target="_blank">GitHub</a>
+	</p>
+
+	<script type="text/javascript" src="./colorconvert.js"></script>
+	<script type="text/javascript">
+	window.onload = function(){
+
+		var $empty = $('#empty');
+		var $change = $('#change');
+		var list = ['rgb', 'hsl', 'hsv', 'hex'];
+		var elList = [];
+		var cc = window.colorConvert;
+
+		list.forEach(function(name) {
+			elList[name] = $('#' + name);
+		});
+
+		function $(el) {
+			return document.querySelector(el);
+		}
+
+		function getV(v) {
+			return v.trim().replace(/\s+/g, ' ').split(' ').map(function(num) {
+				return Number(num);
+			});
+		}
+
+		function render(res) {
+			console.log(res);
+			Object.keys(res).forEach(function(name) {
+				elList[name].value = res[name].join(' ');
+			});
+		}
+
+		$empty.addEventListener('click', function() {
+			Object.keys(elList).forEach(function(name) {
+				elList[name].value = '';
+			});
+		});
+
+		$change.addEventListener('click', function() {
+			list.some(function (name) {
+				var $el = elList[name];
+				var val = getV($el.value);
+				var res = {};
+				if (val && val.length) {
+					res[name] = val;
+					switch (name) {
+						case 'rgb':
+							res['hsl'] = cc.rgb2hsl(val[0], val[1], val[2]);
+							res['hsv'] = cc.rgb2hsv(val[0], val[1], val[2]);
+							break;
+						case 'hsl':
+							res['rgb'] = cc.hsl2rgb(val[0], val[1], val[2]);
+							res['hsv'] = cc.rgb2hsv(val[0], val[1], val[2]);
+							break;
+						case 'hsv':
+							res['hsl'] = cc.rgb2hsl(val[0], val[1], val[2]);
+							res['hsv'] = cc.rgb2hsv(val[0], val[1], val[2]);
+							break;
+					}
+
+					render(res);
+					return true;
+				}
+				return false;
+			});
+		});
+	};
+	</script>
+</body>
+</html>

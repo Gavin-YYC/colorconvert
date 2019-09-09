@@ -7,7 +7,7 @@
     "example": "example"
   },
   "scripts": {
-    "test": "node ./test/index.js",
+    "test": "node test.js",
     "demo": "",
     "build": "rollup -wc"
   },

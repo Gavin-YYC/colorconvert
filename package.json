@@ -1,7 +1,7 @@
 {
   "name": "colorconvert",
   "version": "1.0.0",
-  "description": "JS 在线 颜色转换工具",
+  "description": "JS颜色转换工具",
   "main": "index.js",
   "directories": {
     "example": "example"
@@ -9,7 +9,7 @@
   "scripts": {
     "test": "node test.js",
     "demo": "",
-    "build": "rollup -wc"
+    "build": "rollup"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,12 @@
   },
   "homepage": "https://github.com/Gavin-YYC/colorconvert#readme",
   "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-terser": "^5.1.1",
     "tap-spec": "^5.0.0",
     "tape": "^4.11.0"
-  }
+  },
+  "dependencies": {}
 }

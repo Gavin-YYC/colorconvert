@@ -109,10 +109,10 @@
 
 	<p class="about">
 		<a href="javascript:;">使用方式</a>
-		<a href="https://github.com/Gavin-YYC/colorconvert" target="_blank">GitHub</a>
+		<a href="https://github.com/Gavin-YYC/colorConvert" target="_blank">GitHub</a>
 	</p>
 
-	<script type="text/javascript" src="./colorconvert.js"></script>
+	<script type="text/javascript" src="./colorConvert.js"></script>
 	<script type="text/javascript">
 	window.onload = function(){
 
@@ -137,7 +137,6 @@
 		}
 
 		function render(res) {
-			console.log(res);
 			Object.keys(res).forEach(function(name) {
 				elList[name].value = res[name].join(' ');
 			});

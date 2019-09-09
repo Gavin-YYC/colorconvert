@@ -67,3 +67,45 @@ test('hsv to rgb', t => {
     t.deepEqual(cc.hsv2rgb(210, 67, 1), [1, 2, 3]);
     t.end();
 });
+
+
+// rgb2hex
+test('rgb to hex', t => {
+    t.deepEqual(cc.rgb2hex(0, 0, 0), '#000000');
+    t.deepEqual(cc.rgb2hex(255, 0, 0), '#FF0000');
+    t.deepEqual(cc.rgb2hex(255, 255, 0), '#FFFF00');
+    t.deepEqual(cc.rgb2hex(0, 0, 255), '#0000FF');
+    t.deepEqual(cc.rgb2hex(0, 255, 255), '#00FFFF');
+    t.deepEqual(cc.rgb2hex(255, 255, 255), '#FFFFFF');
+    t.deepEqual(cc.rgb2hex(255, 34, 178), '#FF22B2');
+    t.deepEqual(cc.rgb2hex(12, 1, 23), '#0C0117');
+    t.deepEqual(cc.rgb2hex(233, 200, 200), '#E9C8C8');
+    t.deepEqual(cc.rgb2hex(1, 2, 3), '#010203');
+    t.deepEqual(cc.rgb2hex(1, 2, 3, 67), '#010203AB');
+    t.end();
+});
+
+
+// hex2rgb
+test('hex to rgb', t => {
+    t.deepEqual(cc.hex2rgb('#000000'), [0, 0, 0]);
+    t.deepEqual(cc.hex2rgb('#FF0000'), [255, 0, 0]);
+    t.deepEqual(cc.hex2rgb('#FFFF00'), [255, 255, 0]);
+    t.deepEqual(cc.hex2rgb('#0000FF'), [0, 0, 255]);
+    t.deepEqual(cc.hex2rgb('#00FFFF'), [0, 255, 255]);
+    t.deepEqual(cc.hex2rgb('#FFFFFF'), [255, 255, 255]);
+    t.deepEqual(cc.hex2rgb('#FF22B2'), [255, 34, 178]);
+    t.deepEqual(cc.hex2rgb('#0C0117'), [12, 1, 23]);
+    t.deepEqual(cc.hex2rgb('#E9C8C8'), [233, 200, 200]);
+    t.deepEqual(cc.hex2rgb('#010203'), [1, 2, 3]);
+    t.deepEqual(cc.hex2rgb('#c23'), [204, 34, 51]);
+    t.deepEqual(cc.hex2rgb('#c23'), [204, 34, 51]);
+    t.deepEqual(cc.hex2rgb('#0006'), [0, 0, 0, 40]);
+    t.deepEqual(cc.hex2rgb('#fff'), [255, 255, 255]);
+    t.deepEqual(cc.hex2rgb('#010203AB'), [1, 2, 3, 67]);
+    t.deepEqual(cc.hex2rgb('#010203FF'), [1, 2, 3, 100]);
+    t.deepEqual(cc.hex2rgb('#01020300'), [1, 2, 3, 0]);
+    t.deepEqual(cc.hex2rgb('01020300'), [1, 2, 3, 0]);
+    t.deepEqual(cc.hex2rgb('0C0117'), [12, 1, 23]);
+    t.end();
+});

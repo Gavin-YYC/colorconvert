@@ -7,8 +7,7 @@
     "example": "example"
   },
   "scripts": {
-    "test": "node test.js",
-    "demo": "",
+    "test": "node index.test.js",
     "build": "rollup -c rollup.config.js"
   },
   "repository": {

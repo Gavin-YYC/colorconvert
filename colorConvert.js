@@ -82,6 +82,26 @@ function rgb2hsv(r, g, b) {
   return [Math.round(h), Math.round(s * 100), Math.round(v * 100)];
 }
 /**
+ * rgb2hex
+ *
+ * @param {number} r 红色颜色值 0~255
+ * @param {number} g 绿色颜色值 0~255
+ * @param {number} b 蓝色颜色值 0~255
+ * @param {number} a 透明度 0~100，默认100
+ */
+
+function rgb2hex(r, g, b, a) {
+  if (typeof a === 'undefined') {
+    a = '';
+  } else {
+    a = Math.round(255 * a / 100);
+    a = (a | 1 << 8).toString(16).slice(1);
+  }
+
+  var val = (b | g << 8 | r << 16 | 1 << 24).toString(16).slice(1);
+  return '#' + val.toUpperCase() + a.toUpperCase();
+}
+/**
  * hsl2rgb
  *
  * @param {number} h Hue 色调 0 ~ 360
@@ -201,11 +221,49 @@ function hsv2rgb(h, s, v) {
 
   return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 }
+/**
+ * hex2rgb
+ *
+ * @param {string} r hex颜色值 eg: #000、#325312、#b2c343
+ */
+
+function hex2rgb(hex) {
+  hex = hex.replace(/^#/, '');
+  var a = null;
+
+  if (hex.length === 8) {
+    a = parseInt(hex.slice(6, 8), 16) / 255;
+    hex = hex.slice(0, 6);
+  }
+
+  if (hex.length === 4) {
+    a = parseInt(hex.slice(3, 4).repeat(2), 16) / 255;
+    hex = hex.slice(0, 3);
+  }
+
+  if (hex.length === 3) {
+    hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+  }
+
+  var num = parseInt(hex, 16);
+  var r = num >> 16;
+  var g = num >> 8 & 255;
+  var b = num & 255;
+  var rgb = [r, g, b];
+
+  if (a !== null) {
+    rgb.push(Math.round(a * 100));
+  }
+
+  return rgb;
+}
 
 exports.rgb2hsl = rgb2hsl;
 exports.rgb2hsv = rgb2hsv;
+exports.rgb2hex = rgb2hex;
 exports.hsl2rgb = hsl2rgb;
 exports.hsv2rgb = hsv2rgb;
+exports.hex2rgb = hex2rgb;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 

@@ -80,11 +80,32 @@ export function rgb2hsv(r, g, b) {
 
 
 /**
+ * rgb2hex
+ *
+ * @param {number} r 红色颜色值 0~255
+ * @param {number} g 绿色颜色值 0~255
+ * @param {number} b 蓝色颜色值 0~255
+ * @param {number} a 透明度 0~100，默认100
+ */
+export function rgb2hex(r, g, b, a) {
+	if (typeof a === 'undefined') {
+		a = '';
+	}
+	else {
+		a = Math.round(255 * a / 100);
+		a = (a | 1 << 8).toString(16).slice(1);
+	}
+	const val = ((b | g << 8 | r << 16) | 1 << 24).toString(16).slice(1);
+	return '#' + val.toUpperCase() + a.toUpperCase();
+}
+
+
+/**
  * hsl2rgb
  *
  * @param {number} h Hue 色调 0 ~ 360
  * @param {number} s Saturation 饱和度 0 ~ 100
- * @param {number} l lightness 亮度 0 ~ 100
+ * @param {number} l Lightness 亮度 0 ~ 100
  */
 export function hsl2rgb(h, s, l) {
 	h /= 360;
@@ -193,4 +214,42 @@ export function hsv2rgb(h, s, v) {
 	}
 
 	return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+}
+
+
+/**
+ * hex2rgb
+ *
+ * @param {string} r hex颜色值 eg: #000、#325312、#b2c343
+ */
+export function hex2rgb(hex) {
+	hex = hex.replace(/^#/, '');
+
+	let a = null;
+
+	if (hex.length === 8) {
+		a = parseInt(hex.slice(6, 8), 16) / 255;
+		hex = hex.slice(0, 6);
+	}
+
+	if (hex.length === 4) {
+		a = parseInt(hex.slice(3, 4).repeat(2), 16) / 255;
+		hex = hex.slice(0, 3);
+	}
+
+	if (hex.length === 3) {
+		hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+	}
+
+	const num = parseInt(hex, 16);
+	const r = num >> 16;
+	const g = (num >> 8) & 255;
+	const b = num & 255;
+	const rgb = [r, g, b];
+
+	if (a !== null) {
+		rgb.push(Math.round(a * 100));
+	}
+
+	return rgb;
 }

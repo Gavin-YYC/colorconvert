@@ -13,6 +13,7 @@
 		font-family: "微软雅黑", "Microsoft YaHei", Helvetica Neue, Helvetica, Arial, sans-serif;
 		font-size: 100%;
 		background: #515177;
+		transition: background 100ms ease-out;
 	}
 	.main{
 		width: 80%;
@@ -20,11 +21,16 @@
 		overflow: hidden;
 		margin-top: 100px;
 	}
-	.main h1 {
+	.main .title {
 		text-align: center;
 		padding-bottom: 50px;
 		font-size: 50px;
 		color: #fff;
+	}
+	.main .title a {
+		color: #fff;
+		font-size: 24px;
+		margin-left: 15px;
 	}
 	.layout {
 		display: flex;
@@ -33,13 +39,22 @@
 	.right {
 		width: 50%;
 		flex: 1;
+		olor: #fff;
+		padding: 20px;
 		border-radius: 10px;
 	}
 	.left {
-		padding: 20px;
-		color: #fff;
 		font-size: 24px;
 		background: rgba(60, 171, 75, .5);
+		margin-right: 40px;
+	}
+	.right {
+		background: rgba(202, 198, 146, 0.5);
+	}
+	.right pre {
+		margin: 10px 0;
+		padding: 10px;
+		background: rgba(255, 255, 255, .7);
 	}
 	.form-control {
 		display: flex;
@@ -50,7 +65,7 @@
 		width: 60px;
 	}
 	.form-control input {
-		flex: 1;
+		width: 250px;
 		border: none;
 		outline: none;
 		height: 24px;
@@ -59,6 +74,11 @@
 		line-height: 24px;
 		color: #fff;
 		background: rgba(255, 255, 255, .3);
+	}
+	.form-control span {
+		font-size: 14px;
+		padding-left: 15px;
+		color: rgba(255, 255, 255, .7);
 	}
 	.form-btns {
 		display: flex;
@@ -78,39 +98,53 @@
 </head>
 <body>
 <div class="main">
-	<h1>Color Convert</h1>
+	<h1 class="title">Color Convert<a href="https://github.com/Gavin-YYC/colorconvert" target="_blank">Github</a></h1>
 	<div class="layout">
 		<div class="left">
 			<div class="form-control">
 				<label for="rgb">RGB</label>
-				<input type="text" name="" id="rgb" placeholder="空格分开，示例：255 255 255">
+				<input type="text" name="" id="rgb" placeholder="逗号分隔 255 255 255">
+				<span>分别为R、G、B颜色值</span>
 			</div>
 			<div class="form-control">
 				<label for="hsl">HSL</label>
-				<input type="text" name="" id="hsl" placeholder="空格分开，示例：360 100 100">
+				<input type="text" name="" id="hsl" placeholder="逗号分隔 360 100 100">
+				<span>分别为H、S、L</span>
 			</div>
 			<div class="form-control">
 				<label for="hsv">HSV</label>
-				<input type="text" name="" id="hsv" placeholder="空格分开，示例：360 100 100">
+				<input type="text" name="" id="hsv" placeholder="逗号分隔 360 100 100">
+				<span>分别为H、S、V</span>
 			</div>
 			<div class="form-control">
 				<label for="hex">HEX</label>
 				<input type="text" name="" id="hex" placeholder="示例：#ffffff">
+				<span>#号可选</span>
 			</div>
 			<div class="form-btns">
-				<input type="button" value="清空" id="empty">
-				<input type="button" value="转换" id="change">
+				<input type="button" value="转换(Enter)" id="change">
+				<input type="button" value="清空(ESC)" id="empty">
 			</div>
 		</div>
 		<div class="right">
 			<p>使用方式：</p>
+<pre>
+import cc from 'colorConvert';
+cc.rgb2hsl(255, 34, 178);
+</pre>
+
+<p>或者</p>
+
+<pre>
+&lt;script src="./colorConvert.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+var cc = window.colorConvert;
+cc.rgb2hsl(255, 34, 178);
+&lt;/script&gt;
+</pre>
 		</div>
 	</div>
-
-	<p class="about">
-		<a href="javascript:;">使用方式</a>
-		<a href="https://github.com/Gavin-YYC/colorConvert" target="_blank">GitHub</a>
-	</p>
 
 	<script type="text/javascript" src="./colorConvert.js"></script>
 	<script type="text/javascript">
@@ -131,21 +165,43 @@
 		}
 
 		function getV(v) {
-			return v.trim().replace(/\s+/g, ' ').split(' ').map(function(num) {
-				return Number(num);
-			});
+			var arr = v.trim().replace(/\s+/g, '').split(',');
+			if (arr.length >= 3) {
+				return arr.map(function(num) {
+					return Number(num);
+				});
+			}
+			else if (arr[0] && arr[0].length) {
+				return arr[0];
+			}
+			return [];
 		}
 
 		function render(res) {
 			Object.keys(res).forEach(function(name) {
-				elList[name].value = res[name].join(' ');
+				var val = name === 'hex' ? res[name] : res[name].join(' ');
+				elList[name].value = val;
+			});
+			document.body.style.background = res['hex'];
+		}
+
+		function clean() {
+			Object.keys(elList).forEach(function(name) {
+				elList[name].value = '';
 			});
 		}
 
 		$empty.addEventListener('click', function() {
-			Object.keys(elList).forEach(function(name) {
-				elList[name].value = '';
-			});
+			clean();
+		});
+
+		document.body.addEventListener('keyup', e => {
+			if (e.keyCode === 27) {
+				clean();
+			}
+			else if (e.keyCode === 13) {
+				$change.click();
+			}
 		});
 
 		$change.addEventListener('click', function() {
@@ -153,20 +209,32 @@
 				var $el = elList[name];
 				var val = getV($el.value);
 				var res = {};
+				var rgb = '';
 				if (val && val.length) {
 					res[name] = val;
 					switch (name) {
 						case 'rgb':
 							res['hsl'] = cc.rgb2hsl(val[0], val[1], val[2]);
 							res['hsv'] = cc.rgb2hsv(val[0], val[1], val[2]);
+							res['hex'] = cc.rgb2hex(val[0], val[1], val[2]);
 							break;
 						case 'hsl':
-							res['rgb'] = cc.hsl2rgb(val[0], val[1], val[2]);
-							res['hsv'] = cc.rgb2hsv(val[0], val[1], val[2]);
+							rgb = cc.hsl2rgb(val[0], val[1], val[2]);
+							res['hsv'] = cc.rgb2hsv(rgb[0], rgb[1], rgb[2]);
+							res['hex'] = cc.rgb2hex(rgb[0], rgb[1], rgb[2]);
+							res['rgb'] = rgb;
 							break;
 						case 'hsv':
-							res['hsl'] = cc.rgb2hsl(val[0], val[1], val[2]);
-							res['hsv'] = cc.rgb2hsv(val[0], val[1], val[2]);
+							rgb = cc.hsv2rgb(val[0], val[1], val[2]);
+							res['hsl'] = cc.rgb2hsv(rgb[0], rgb[1], rgb[2]);
+							res['hex'] = cc.rgb2hex(rgb[0], rgb[1], rgb[2]);
+							res['rgb'] = rgb;
+							break;
+						case 'hex':
+							rgb = cc.hex2rgb(val);
+							res['hsl'] = cc.rgb2hsv(rgb[0], rgb[1], rgb[2]);
+							res['hsv'] = cc.rgb2hsv(rgb[0], rgb[1], rgb[2]);
+							res['rgb'] = rgb;
 							break;
 					}
 

@@ -179,7 +179,7 @@ cc.rgb2hsl(255, 34, 178);
 
 		function render(res) {
 			Object.keys(res).forEach(function(name) {
-				var val = name === 'hex' ? res[name] : res[name].join(' ');
+				var val = name === 'hex' ? res[name] : res[name].join(', ');
 				elList[name].value = val;
 			});
 			document.body.style.background = res['hex'];

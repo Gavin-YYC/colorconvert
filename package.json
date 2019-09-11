@@ -1,8 +1,8 @@
 {
   "name": "@youc/colocconvert",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "color convert rgb2hsl,rgb2hsv,rgb2hex,hsl2rgb,hsv2rgb,hex2reg",
-  "main": "index.js",
+  "main": "colorConvert.js",
   "directories": {
     "example": "example"
   },

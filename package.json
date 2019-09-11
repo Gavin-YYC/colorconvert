@@ -1,6 +1,6 @@
 {
   "name": "@youc/colocconvert",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "color convert rgb2hsl,rgb2hsv,rgb2hex,hsl2rgb,hsv2rgb,hex2reg",
   "main": "colorConvert.js",
   "directories": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "node index.test.js",
-    "build": "rollup -c rollup.config.js"
+    "build": "node rollup.config.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
+    "rollup": "^1.21.2",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-terser": "^5.1.1",
     "tape": "^4.11.0"

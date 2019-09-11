@@ -19,7 +19,8 @@
 		width: 80%;
 		margin: 0 auto;
 		overflow: hidden;
-		margin-top: 100px;
+		margin-top: 50px;
+		margin-bottom: 50px;
 	}
 	.main .title {
 		text-align: center;
@@ -59,20 +60,26 @@
 	}
 	.form-control {
 		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		align-items: flex-start;
 		margin-bottom: 20px;
+	}
+	.row {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		margin-bottom: 10px;
 	}
 	.form-control label {
 		width: 60px;
 	}
 	.form-control input {
-		width: 250px;
+		flex: 1;
 		border: none;
 		outline: none;
 		height: 24px;
 		padding: 0 5px;
-		margin-right: 15px;
 		font-size: 20px;
 		line-height: 24px;
 		color: #fff;
@@ -99,10 +106,6 @@
 	@media screen and (max-width: 600px) {
 		.layout {
 			flex-direction: column;
-		}
-		.main {
-			margin-top: 50px;
-			margin-bottom: 50px;
 		}
 		.main .title {
 			font-size: 34px;
@@ -137,23 +140,31 @@
 	<div class="layout">
 		<div class="left">
 			<div class="form-control">
-				<label for="rgb">RGB</label>
-				<input type="text" name="" id="rgb" placeholder="逗号分隔 255 255 255">
+				<div class="row">
+					<label for="rgb">RGB</label>
+					<input type="text" name="" id="rgb" placeholder="逗号分隔 255 255 255">
+				</div>
 				<span>分别为R、G、B颜色值</span>
 			</div>
 			<div class="form-control">
-				<label for="hsl">HSL</label>
-				<input type="text" name="" id="hsl" placeholder="逗号分隔 360 100 100">
+				<div class="row">
+					<label for="hsl">HSL</label>
+					<input type="text" name="" id="hsl" placeholder="逗号分隔 360 100 100">
+				</div>
 				<span>分别为H、S、L</span>
 			</div>
 			<div class="form-control">
-				<label for="hsv">HSV</label>
-				<input type="text" name="" id="hsv" placeholder="逗号分隔 360 100 100">
+				<div class="row">
+					<label for="hsv">HSV</label>
+					<input type="text" name="" id="hsv" placeholder="逗号分隔 360 100 100">
+				</div>
 				<span>分别为H、S、V</span>
 			</div>
 			<div class="form-control">
-				<label for="hex">HEX</label>
-				<input type="text" name="" id="hex" placeholder="示例：#ffffff">
+				<div class="row">
+					<label for="hex">HEX</label>
+					<input type="text" name="" id="hex" placeholder="示例：#ffffff">
+				</div>
 				<span>#号可选</span>
 			</div>
 			<div class="form-btns">
@@ -162,16 +173,26 @@
 			</div>
 		</div>
 		<div class="right">
-			<p>使用方式：</p>
+<p>安装</p>
+<pre>
+npm install --save @youc/colocconvert
+</pre>
+
+<p>Node Env</p>
+<pre>
+const cc = require('@youc/colocconvert');
+cc.rgb2hsl(255, 34, 178);
+</pre>
+
+<p>ES6 Env</p>
 <pre>
 import cc from '@youc/colocconvert';
 cc.rgb2hsl(255, 34, 178);
 </pre>
 
-<p>或者</p>
-
+<p>Borwser Env</p>
 <pre>
-&lt;script src="./colorConvert.js"&gt;&lt;/script&gt;
+&lt;script src="./colorConvert.min.js"&gt;&lt;/script&gt;
 
 &lt;script&gt;
 var cc = window.colorConvert;
@@ -181,7 +202,7 @@ cc.rgb2hsl(255, 34, 178);
 		</div>
 	</div>
 
-	<script type="text/javascript" src="./colorConvert.js"></script>
+	<script type="text/javascript" src="./colorConvert.min.js"></script>
 	<script type="text/javascript">
 	window.onload = function(){
 
@@ -224,6 +245,7 @@ cc.rgb2hsl(255, 34, 178);
 			Object.keys(elList).forEach(function(name) {
 				elList[name].value = '';
 			});
+			document.body.style.background = '#515177';
 		}
 
 		$empty.addEventListener('click', function() {

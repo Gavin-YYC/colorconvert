@@ -11,17 +11,30 @@
 
 ## Usage：
 
-```
-import cc from '@youc/colocconvert';
+**安装：**
 
+```
+npm install --save @youc/colocconvert
+```
+
+**Node Env**
+
+```
+const cc = require('@youc/colocconvert');
 cc.rgb2hsl(255, 34, 178);
 ```
 
-or
+**ES6 Env**
+
+```
+import cc from '@youc/colocconvert';
+cc.rgb2hsl(255, 34, 178);
+```
+
+**Borwser Env**
 
 ```
 <script src="./colorConvert.js"></script>
-
 <script>
 var cc = window.colorConvert;
 cc.rgb2hsl(255, 34, 178);

@@ -14,20 +14,20 @@
 **安装：**
 
 ```
-npm install --save @youc/colocconvert
+npm install --save @youc/colorconvert
 ```
 
 **Node Env**
 
 ```
-const cc = require('@youc/colocconvert');
+const cc = require('@youc/colorconvert');
 cc.rgb2hsl(255, 34, 178);
 ```
 
 **ES6 Env**
 
 ```
-import cc from '@youc/colocconvert';
+import cc from '@youc/colorconvert';
 cc.rgb2hsl(255, 34, 178);
 ```
 

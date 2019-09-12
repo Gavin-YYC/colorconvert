@@ -1,6 +1,6 @@
 {
   "name": "@youc/colorconvert",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "color convert rgb2hsl,rgb2hsv,rgb2hex,hsl2rgb,hsv2rgb,hex2reg",
   "main": "colorConvert.js",
   "directories": {

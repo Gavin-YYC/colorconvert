@@ -139,41 +139,42 @@
 	<h1 class="title">Color Convert<a href="https://github.com/Gavin-YYC/colorconvert" target="_blank">Github</a></h1>
 	<div class="layout">
 		<div class="left">
+			<p>Input</p>
 			<div class="form-control">
 				<div class="row">
 					<label for="rgb">RGB</label>
-					<input type="text" name="" id="rgb" placeholder="逗号分隔 255 255 255">
+					<input type="text" name="" id="rgb" placeholder="e.g: 255, 255, 255">
 				</div>
-				<span>分别为R、G、B颜色值</span>
+				<span>R, G, B</span>
 			</div>
 			<div class="form-control">
 				<div class="row">
 					<label for="hsl">HSL</label>
-					<input type="text" name="" id="hsl" placeholder="逗号分隔 360 100 100">
+					<input type="text" name="" id="hsl" placeholder="e.g: 360, 100, 100">
 				</div>
-				<span>分别为H、S、L</span>
+				<span>H, S, L</span>
 			</div>
 			<div class="form-control">
 				<div class="row">
 					<label for="hsv">HSV</label>
-					<input type="text" name="" id="hsv" placeholder="逗号分隔 360 100 100">
+					<input type="text" name="" id="hsv" placeholder="e.g: 360, 100, 100">
 				</div>
-				<span>分别为H、S、V</span>
+				<span>H, S, V</span>
 			</div>
 			<div class="form-control">
 				<div class="row">
 					<label for="hex">HEX</label>
 					<input type="text" name="" id="hex" placeholder="示例：#ffffff">
 				</div>
-				<span>#号可选</span>
+				<span># is optional</span>
 			</div>
 			<div class="form-btns">
-				<input type="button" value="转换(Enter)" id="change">
-				<input type="button" value="清空(ESC)" id="empty">
+				<input type="button" value="Convert(Enter)" id="change">
+				<input type="button" value="Empty(ESC)" id="empty">
 			</div>
 		</div>
 		<div class="right">
-<p>安装</p>
+<p>Install</p>
 <pre>
 npm install --save @youc/colorconvert
 </pre>

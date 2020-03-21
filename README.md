@@ -31,7 +31,7 @@ import cc from '@youc/colorconvert';
 cc.rgb2hsl(255, 34, 178);
 ```
 
-**Borwser Env**
+**Browser Env**
 
 ```
 <script src="./colorConvert.js"></script>
